@@ -20,8 +20,32 @@ const createPost = async (req, res) => {
 // Obtener todas las publicaciones
 const getPosts = async (req, res) => {
   try {
-    const posts = await Post.find().populate('author', 'username');
+    const posts = await Post.find()
+      .populate('author', 'username')
+      .populate({
+        path: 'comments',
+        populate: { path: 'user', select: 'username' }
+      });
     res.json(posts);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// Obtener las publicaciones más populares (con más likes)
+const getTrendingPosts = async (req, res) => {
+  try {
+    // Ordenamos por la longitud del array `likes` y limitamos los resultados a 5 publicaciones
+    const trendingPosts = await Post.find()
+      .sort({ 'likes.length': -1 }) // Ordena por el número de likes (longitud del array)
+      .limit(5) // Solo los 5 posts más populares
+      .populate('author', 'username')
+      .populate({
+        path: 'comments',
+        populate: { path: 'user', select: 'username' }
+      });
+    
+    res.json(trendingPosts);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -49,22 +73,6 @@ const updatePost = async (req, res) => {
 };
 
 // Eliminar una publicación
-/*const deletePost = async (req, res) => {
-  const { id } = req.params;
-
-  try {
-    const post = await Post.findById(id);
-    if (!post || post.author.toString() !== req.user.id) {
-      return res.status(403).json({ message: 'Not authorized to delete this post' });
-    }
-
-    await post.remove();
-    res.json({ message: 'Post deleted' });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};*/
-// Eliminar una publicación
 const deletePost = async (req, res) => {
   const { id } = req.params;
 
@@ -84,5 +92,4 @@ const deletePost = async (req, res) => {
   }
 };
 
-
-module.exports = { createPost, getPosts, updatePost, deletePost };
+module.exports = { createPost, getPosts, getTrendingPosts, updatePost, deletePost };

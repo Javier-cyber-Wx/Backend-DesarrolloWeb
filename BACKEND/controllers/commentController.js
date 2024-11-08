@@ -19,15 +19,15 @@ const addComment = async (req, res) => {
     }
 };
 
-
 // Función para obtener comentarios
 const getComments = async (req, res) => {
     try {
-        const comments = await Comment.find({ postId: req.params.postId });
+        const comments = await Comment.find({ post: req.params.postId }).populate('user', 'username');
         res.status(200).json(comments);
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener los comentarios' });
     }
 };
+
 
 module.exports = { addComment, getComments };
