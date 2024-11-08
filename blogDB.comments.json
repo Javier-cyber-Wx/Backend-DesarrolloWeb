@@ -1,0 +1,14 @@
+[{
+  "_id": "1",
+  "postId": "1",
+  "authorId": "1",
+  "content": "¡Gracias por los consejos! Me serán muy útiles.",
+  "likes": 0
+},
+{
+  "_id": "2",
+  "postId": "2",
+  "authorId": "1",
+  "content": "Interesante artículo, definitivamente lo intentaré.",
+  "likes": 1
+}]

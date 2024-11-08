@@ -1,0 +1,14 @@
+[{
+  "_id": "1",
+  "username": "mariagomez",
+  "email": "mariagomez@hotmail.com",
+  "password": "miContraseña123",
+  "role": "reader"
+},
+{
+  "_id": "2",
+  "username": "juanperez",
+  "email": "juanperez@gmail.com",
+  "password": "otraContraseña456",
+  "role": "author"
+}]

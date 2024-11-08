@@ -1,0 +1,15 @@
+[{
+  "_id": "1",
+  "title": "10 Consejos para Aprender a Programar",
+  "content": "La programación puede parecer complicada al principio, pero con práctica y paciencia, se puede dominar. Aquí te dejo 10 consejos que me ayudaron en mi camino para convertirme en desarrollador.",
+  "authorId": "2",
+  "likes": 15,
+  "comments": []
+},
+{
+  "_id": "2",
+  "title": "Cómo Mejorar tus Habilidades de Escritura",
+  "content": "Escribir es una habilidad esencial. En este post, comparto algunas técnicas para mejorar tu escritura, ya sea para blogs o trabajos académicos.",
+  "authorId": "2",
+  "comments": []
+}]
